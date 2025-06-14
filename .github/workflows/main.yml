@@ -57,7 +57,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform init -backend-config=backend.conf
+        run: terraform init -reconfigure -backend-config=backend.conf
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
@@ -95,7 +95,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform init -backend-config=backend.conf
+        run: terraform init -reconfigure -backend-config=backend.conf
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
