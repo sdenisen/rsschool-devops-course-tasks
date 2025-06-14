@@ -28,6 +28,7 @@ jobs:
       - name: Check formatting
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform fmt -check
+
   terraform-plan:
     name: Terraform Plan
     needs: terraform-check
@@ -91,12 +92,6 @@ jobs:
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init -reconfigure
-
-      - name: Download plan artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan
-          path: ${{ env.TF_WORKING_DIR }}
 
       - name: Terraform Apply
         working-directory: ${{ env.TF_WORKING_DIR }}
