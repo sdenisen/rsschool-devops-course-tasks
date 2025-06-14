@@ -8,7 +8,7 @@ permissions:
   id-token: write
   contents: read
 env:
-  TF_WORKING_DIR: ./terraform  
+  TF_WORKING_DIR: .
   AWS_REGION: eu-north-1
   ROLE_ARN: arn:aws:iam::659125779082:role/GithubActionsRole
   
