@@ -4,6 +4,6 @@ terraform {
     key            = "rsschool-devops-course-tasks/terraform.tfstate"
     region         = "eu-north-1"
     encrypt        = true
-    dynamodb_table = "tf-state-lock"
+    use_lockfile   = true
   }
 }
