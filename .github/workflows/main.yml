@@ -90,7 +90,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform init -input=false
+        run: terraform init -reconfigure
 
       - name: Download plan artifact
         uses: actions/download-artifact@v4
