@@ -60,7 +60,7 @@ jobs:
 
       - name: Save plan artifact
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan
           path: ${{ env.TF_WORKING_DIR }}/tfplan
@@ -93,7 +93,7 @@ jobs:
         run: terraform init -input=false
 
       - name: Download plan artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tfplan
           path: ${{ env.TF_WORKING_DIR }}
