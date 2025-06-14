@@ -52,7 +52,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform init -input=false
+        run: terraform init -reconfigure
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_WORKING_DIR }}
