@@ -9,26 +9,41 @@ resource "aws_vpc" "main" {
 }
 
 # Public Subnets
-resource "aws_subnet" "public" {
-  count                   = 2
+resource "aws_subnet" "public-subnet-1" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = var.public_subnet_cidrs[count.index]
-  availability_zone       = var.availability_zones[count.index]
+  cidr_block              = var.public_subnet_1
+  availability_zone       = var.az_1
   map_public_ip_on_launch = true
-
   tags = {
-    Name = "public-subnet-${count.index + 1}"
+    Name = "public-subnet-1"
+  }
+}
+
+resource "aws_subnet" "public-subnet-2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_2
+  availability_zone       = var.az_2
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "public-subnet-2"
   }
 }
 
 # Private Subnets
-resource "aws_subnet" "private" {
-  count             = 2
+resource "aws_subnet" "private-subnet-1" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = var.private_subnet_cidrs[count.index]
-  availability_zone = var.availability_zones[count.index]
-
+  cidr_block        = var.private_subten_1
+  availability_zone = var.az_1
   tags = {
-    Name = "private-subnet-${count.index + 1}"
+    Name = "private-subnet-1"
+  }
+}
+
+resource "aws_subnet" "private-subnet-2" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.private_subten_2
+  availability_zone = var.az_2
+  tags = {
+    Name = "private-subnet-2"
   }
 }
