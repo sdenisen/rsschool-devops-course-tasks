@@ -39,3 +39,9 @@ variable public_subnet_2 {
   type= string
   default = "10.0.2.0/24"
 }
+
+variable ec2_key {
+  description = "private key for EC2"
+  type= string
+  default = "ec2-eu-west-rs.school"
+}
