@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.9-slim'
+            args '-u root'
+        }
+    }
 
     environment {
         DOCKER_IMAGE = "flask-hello:local"
