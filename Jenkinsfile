@@ -14,20 +14,14 @@ pipeline {
         }
 
         stage('Install Dependencies') {
-            agent {
-                docker { image 'python:3.9-slim' }
-            }
             steps {
-                    sh 'pip install -r requirements.txt'
+                    sh 'python3 -m venv venv && . venv/bin/activate && pip install -r requirements.txt'
                 }
             }
 
         stage('Run Unit Tests') {
-            agent {
-                docker { image 'python:3.9-slim' }
-            }
             steps {
-                    sh 'pytest || echo "Tests failed (ignored for demo)"'
+                    sh '. venv/bin/activate && pytest || echo "Tests failed (ignored for demo)"'
                 }
             }
 
