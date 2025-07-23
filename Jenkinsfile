@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9-slim'
-            args '-u root'
-        }
-    }
+    agent any
 
     environment {
         DOCKER_IMAGE = "flask-hello:local"
@@ -19,13 +14,19 @@ pipeline {
         }
 
         stage('Install Dependencies') {
-                steps {
+            agent {
+                docker { image 'python:3.9-slim' }
+            }
+            steps {
                     sh 'pip install -r requirements.txt'
                 }
             }
 
         stage('Run Unit Tests') {
-                steps {
+            agent {
+                docker { image 'python:3.9-slim' }
+            }
+            steps {
                     sh 'pytest || echo "Tests failed (ignored for demo)"'
                 }
             }
